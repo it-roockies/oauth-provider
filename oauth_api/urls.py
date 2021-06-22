@@ -19,8 +19,8 @@ from help.views import ApiEndpoint, dashboard
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("o/", include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('api/hello/', ApiEndpoint.as_view()),
-    path('dashboard/', dashboard, name='dashboard')
+    path('dashboard/', dashboard, name='dashboard'),
+    path('', include('oauth2_provider.urls', namespace='oauth2_provider')),
 ]

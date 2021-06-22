@@ -53,7 +53,13 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'oauth_api.urls'
 
 OAUTH2_PROVIDER = {
-    "OIDC_ENABLED": True
+    "OAUTH2_VALIDATOR_CLASS": "oauth_api.oauth2_validators.Validator",
+    "OIDC_ENABLED": True,
+    "SCOPES": {
+        "openid": "OpenID Connect scope",
+        "read": "Reading scope",
+        "write": "Writing scope"
+    },
 }
 
 
@@ -126,7 +132,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-LOGIN_URL = 'accounts/login'
+LOGIN_URL = '/accounts/login'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = "dashboard"
 # access_token = 'kuxujsbxsdHPRqvnnWzSShkubv0pDD'
